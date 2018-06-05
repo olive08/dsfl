@@ -1,0 +1,48 @@
+//stack Application expression conversion & Evaluation
+
+template <class T> class stack
+{
+	struct node
+	{
+	   T data;
+	   node *next;
+	};
+	node *top;
+public:
+        stack()
+        {
+	    top=NULL;
+        }
+        int empty();
+        void push(T);
+        T pop();
+        T Top()
+        {
+	        return top->data;
+        }
+};
+template <class T>int stack<T>::empty()
+{
+ if(top==NULL)
+	return 1;
+ else
+ 	return 0;
+}
+template <class T>void stack<T>::push(T x)
+{
+  node *newnode=new node;
+  newnode->data=x;
+  newnode->next=top;
+  top=newnode;
+}
+template <class T>T stack<T>::pop()
+{
+ node *temp=top;
+ T x;
+ top=top->next;
+ x=temp->data;
+ delete temp;
+ return x;
+}
+
+ 
